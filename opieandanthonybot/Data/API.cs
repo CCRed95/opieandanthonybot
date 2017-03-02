@@ -30,6 +30,7 @@ namespace opieandanthonybot.Data
 			foreach (var analyzer in subredditProxy.New
 				.Take(ScannerSampleSize).Select(post => new PostAnalyzer(post)))
 			{
+				//TODO this logic is fucked a bit, fix it
 				//analyzer.ShouldWaitToAnalyze ||
 				if (!analyzer.HasAnyLinkFlair)
 				{

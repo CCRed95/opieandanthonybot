@@ -72,74 +72,10 @@ namespace opieandanthonybot.Management
 				             $"therefore it is assumed to be at least somewhat O&A related.\r\r" +
 										 $"The post has been set to Flair: \'{LinkFlair.OpieAndAnthonyRelated.Value.FlairText}\'.\r\r" +
 										 $"If you believe this has been flaired incorrectly, simply edit the flair selection.");
-				hasFlairBeenSet = true;
 			}
 			var analysis = DAL.I.SubmitPostAnalysis(post, BotAction.Approve);
-			//post.Comment($"[DEBUG] scanned by bot." +
-			//						 $"\r\r" +
-			//						 $"Post ID: {analysis.PostID}" +
-			//						 $"\r\r" +
-			//						 $"Scan Time UTC: {analysis.AnalysisTimeUTC}");
 			 
-		}
-
-		private void RemovePost(FlairRule violatedRule)
-		{
-			var analysis = DAL.I.SubmitPostAnalysis(post, BotAction.Remove);
-			post.Comment(
-				$"rule trigged: {violatedRule.Name}. " +
-				$"Must have link flair \'{violatedRule.Value.Flair.Value.FlairText}\'." +
-				$"\r\r" +
-				$"Post ID: {analysis.PostID}" +
-				$"\r\r" +
-				$"Scan Time UTC: {analysis.AnalysisTimeUTC}");
-
 		}
 
 	}
 }
-/*		public void PreformAnalysis()
-		{
-			foreach (var rule in FlairRule.Enumerate())
-			{
-				if (rule.Value.qualifier(post))
-				{
-					if (!post.HasLinkFlair(rule.Value.flair))
-					{
-						RemovePost(rule);
-						return;
-					}
-					else
-					{
-						post.Comment($"[DEBUG] Flair requirement for \'{rule.Name}\' met");
-					}
-				}
-			}
-			if (Equals(post.GetLinkFlair(), LinkFlair.None))
-			{
-				post.SetFlair(LinkFlair.OpieAndAnthonyRelated);
-				post.Comment($"[DEBUG] no flair set, but no rule was triggered." +
-									 $"\r\r" +
-									 $"Automatically set flair to \'O&A Related\'.");
-			}
-			var analysis = DAL.I.SubmitPostAnalysis(post, BotAction.Approve);
-			post.Comment($"[DEBUG] scanned by bot." +
-									 $"\r\r" +
-									 $"Post ID: {analysis.PostID}" +
-									 $"\r\r" +
-									 $"Scan Time UTC: {analysis.AnalysisTimeUTC}");
-
-		}
-
-		private void RemovePost(FlairRule violatedRule)
-		{
-			var analysis = DAL.I.SubmitPostAnalysis(post, BotAction.Remove);
-			post.Comment(
-				$"rule trigged: {violatedRule.Name}. " +
-				$"Must have link flair \'{violatedRule.Value.flair.Value.FlairText}\'." +
-				$"\r\r" +
-				$"Post ID: {analysis.PostID}" +
-				$"\r\r" +
-				$"Scan Time UTC: {analysis.AnalysisTimeUTC}");
-
-		}*/
