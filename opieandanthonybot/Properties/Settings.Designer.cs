@@ -22,16 +22,5 @@ namespace opieandanthonybot.Properties {
                 return defaultInstance;
             }
         }
-        
-        [global::System.Configuration.ApplicationScopedSettingAttribute()]
-        [global::System.Diagnostics.DebuggerNonUserCodeAttribute()]
-        [global::System.Configuration.SpecialSettingAttribute(global::System.Configuration.SpecialSetting.ConnectionString)]
-        [global::System.Configuration.DefaultSettingValueAttribute("Data Source=184.168.47.17;Initial Catalog=opieandanthonylive_db;Persist Security " +
-            "Info=True;User ID=tc_backend")]
-        public string opieandanthonylive_dbConnectionString {
-            get {
-                return ((string)(this["opieandanthonylive_dbConnectionString"]));
-            }
-        }
     }
 }

@@ -1,10 +1,8 @@
-﻿using System;
-using opieandanthonybot.Data;
+﻿using opieandanthonybot.Data;
 using opieandanthonybot.Extensions;
 using opieandanthonybot.Management.Flair;
 using opieandanthonybot.Management.Qualifiers;
 using RedditSharp.Things;
-using static opieandanthonybot.Configuration.Config;
 
 namespace opieandanthonybot.Management
 {
