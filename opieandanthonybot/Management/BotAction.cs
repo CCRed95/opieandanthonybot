@@ -6,7 +6,10 @@ using System.Threading.Tasks;
 
 namespace opieandanthonybot.Management
 {
-	class BotAction
+	public enum BotAction
 	{
+		Approve,
+		Remove,
+		NotifyMods
 	}
 }

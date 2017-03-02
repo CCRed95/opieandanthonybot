@@ -12,6 +12,9 @@ using System.Windows.Media;
 using System.Windows.Media.Imaging;
 using System.Windows.Navigation;
 using System.Windows.Shapes;
+using System.Windows.Threading;
+using opieandanthonybot.Data;
+using static opieandanthonybot.Configuration.Config;
 
 namespace opieandanthonybot
 {
@@ -20,9 +23,26 @@ namespace opieandanthonybot
 	/// </summary>
 	public partial class MainWindow : Window
 	{
+		private readonly DispatcherTimer dispatcher;
+
 		public MainWindow()
 		{
 			InitializeComponent();
+
+			dispatcher = new DispatcherTimer
+			{
+				Interval = AnalyzerDispatchTime
+			};
+			dispatcher.Tick += ExecuteAnalyzer;
+
+			dispatcher.Start();
+		}
+
+		private void ExecuteAnalyzer(object Sender, EventArgs Args)
+		{
+			dispatcher.Stop();
+			API.I.ScanRecentPosts();
+			dispatcher.Start();
 		}
 	}
 }

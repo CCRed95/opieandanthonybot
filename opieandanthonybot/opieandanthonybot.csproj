@@ -34,8 +34,17 @@
     <WarningLevel>4</WarningLevel>
   </PropertyGroup>
   <ItemGroup>
+    <Reference Include="Newtonsoft.Json, Version=8.0.0.0, Culture=neutral, PublicKeyToken=30ad4fe6b2a6aeed, processorArchitecture=MSIL">
+      <HintPath>..\packages\Newtonsoft.Json.8.0.3\lib\net45\Newtonsoft.Json.dll</HintPath>
+      <Private>True</Private>
+    </Reference>
+    <Reference Include="RedditSharp, Version=1.1.12.0, Culture=neutral, processorArchitecture=MSIL">
+      <HintPath>..\packages\RedditSharp.1.1.12\lib\Net45\RedditSharp.dll</HintPath>
+      <Private>True</Private>
+    </Reference>
     <Reference Include="System" />
     <Reference Include="System.Data" />
+    <Reference Include="System.Data.Linq" />
     <Reference Include="System.Xml" />
     <Reference Include="Microsoft.CSharp" />
     <Reference Include="System.Core" />
@@ -62,16 +71,33 @@
       <DependentUpon>App.xaml</DependentUpon>
       <SubType>Code</SubType>
     </Compile>
+    <Compile Include="Collections\FlexEnum.cs" />
+    <Compile Include="Configuration\BotConfigFileReader.cs" />
+    <Compile Include="Configuration\BotRunMode.cs" />
     <Compile Include="Configuration\Config.cs" />
-    <Compile Include="Data\APL.cs" />
+    <Compile Include="Data\API.cs" />
+    <Compile Include="Data\Context\ServerDataContext.cs" />
     <Compile Include="Data\DAL.cs" />
+    <Compile Include="Data\Domain\AnalyzedPost.cs" />
+    <Compile Include="Data\ProjectedTypes\CSSFlairDefinition.cs" />
+    <Compile Include="Data\ProjectedTypes\FlairRuleDefinition.cs" />
+    <Compile Include="Data\Server.designer.cs">
+      <AutoGen>True</AutoGen>
+      <DesignTime>True</DesignTime>
+      <DependentUpon>Server.dbml</DependentUpon>
+    </Compile>
+    <Compile Include="Extensions\PostExtensions.cs" />
     <Compile Include="MainWindow.xaml.cs">
       <DependentUpon>MainWindow.xaml</DependentUpon>
       <SubType>Code</SubType>
     </Compile>
   </ItemGroup>
   <ItemGroup>
+    <Compile Include="Management\AnalyzerContext.cs" />
     <Compile Include="Management\BotAction.cs" />
+    <Compile Include="Management\Flair\LinkFlair.cs" />
+    <Compile Include="Management\PostAnalyzer.cs" />
+    <Compile Include="Management\Qualifiers\FlairRule.cs" />
     <Compile Include="Properties\AssemblyInfo.cs">
       <SubType>Code</SubType>
     </Compile>
@@ -89,6 +115,15 @@
       <Generator>ResXFileCodeGenerator</Generator>
       <LastGenOutput>Resources.Designer.cs</LastGenOutput>
     </EmbeddedResource>
+    <None Include="Data\Server.dbml">
+      <Generator>MSLinqToSQLGenerator</Generator>
+      <LastGenOutput>Server.designer.cs</LastGenOutput>
+      <SubType>Designer</SubType>
+    </None>
+    <None Include="Data\Server.dbml.layout">
+      <DependentUpon>Server.dbml</DependentUpon>
+    </None>
+    <None Include="packages.config" />
     <None Include="Properties\Settings.settings">
       <Generator>SettingsSingleFileGenerator</Generator>
       <LastGenOutput>Settings.Designer.cs</LastGenOutput>
@@ -97,5 +132,9 @@
   <ItemGroup>
     <None Include="App.config" />
   </ItemGroup>
+  <ItemGroup>
+    <Service Include="{3259AA49-8AA1-44D3-9025-A0B520596A8C}" />
+  </ItemGroup>
+  <ItemGroup />
   <Import Project="$(MSBuildToolsPath)\Microsoft.CSharp.targets" />
 </Project>
